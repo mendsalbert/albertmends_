@@ -1,0 +1,547 @@
+/* Classic / System-era desktop */
+
+.desktop-root {
+  --desk-ink: #111111;
+  --desk-muted: #555555;
+  --desk-accent: #0000aa;
+  --font-pixel: var(--font-display), "Courier New", monospace;
+  --font-system: var(--font-mono), "Courier New", monospace;
+  --cursor-arrow: url("/cursors/arrow.svg") 1 1, auto;
+  --cursor-pointer: url("/cursors/pointer.svg") 5 1, pointer;
+  --cursor-text: url("/cursors/text.svg") 7 8, text;
+  --cursor-grab: url("/cursors/grab.svg") 8 8, grab;
+  --cursor-grabbing: url("/cursors/grabbing.svg") 8 8, grabbing;
+  background: #ffffff !important;
+  color: #111111;
+  font-family: var(--font-system);
+  cursor: var(--cursor-arrow);
+}
+
+.desktop-root a,
+.desktop-root button:not(.desktop-folder):not(.desktop-app),
+.desktop-root [role="link"],
+.desktop-closebox,
+.desktop-close-text {
+  cursor: var(--cursor-pointer);
+}
+
+.desktop-folder,
+.desktop-app,
+.desktop-titlebar {
+  cursor: var(--cursor-grab) !important;
+}
+
+.desktop-folder:active,
+.desktop-app:active,
+.desktop-titlebar:active,
+.desktop-root.is-dragging {
+  cursor: var(--cursor-grabbing) !important;
+}
+
+.desktop-terminal,
+.desktop-terminal-input,
+.desktop-root input,
+.desktop-root textarea {
+  cursor: var(--cursor-text);
+}
+
+.desktop-menubar,
+.desktop-dock {
+  font-family: var(--font-system);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+}
+
+.desktop-hero-eyebrow {
+  font-family: var(--font-system);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+}
+
+.desktop-hero-name {
+  font-family: var(--font-pixel);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+}
+
+.desktop-hero-sub {
+  font-family: var(--font-system);
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+}
+
+.desktop-folder-label {
+  font-family: var(--font-system);
+  font-size: 13px;
+  line-height: 1.2;
+  color: #111;
+  background: #fff;
+  border: 1px solid transparent;
+  max-width: 96px;
+  word-break: break-word;
+}
+
+.desktop-folder:hover .desktop-folder-label,
+.desktop-folder:focus-visible .desktop-folder-label {
+  background: #0000aa;
+  color: #fff;
+  border-color: #0000aa;
+}
+
+.desktop-folder-svg {
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.25));
+}
+
+.desktop-folder:active .desktop-folder-svg {
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2));
+  transform: translate(1px, 1px);
+}
+
+/* Classic Mac window chrome */
+.desktop-window {
+  border: 2px solid #111;
+  box-shadow:
+    inset 1px 1px 0 #fff,
+    3px 3px 0 rgba(0, 0, 0, 0.28);
+  border-radius: 0;
+  animation: desk-window-in 0.22s steps(4, end);
+}
+
+.desktop-titlebar {
+  background: repeating-linear-gradient(
+    to bottom,
+    #dddddd 0px,
+    #dddddd 1px,
+    #cfcfcf 1px,
+    #cfcfcf 2px
+  );
+  border-bottom: 2px solid #111;
+  font-family: var(--font-system);
+}
+
+.desktop-title {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: #111;
+  background: #dddddd;
+  padding: 0 8px;
+}
+
+.desktop-closebox {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border: 2px solid #111;
+  background:
+    linear-gradient(135deg, transparent 44%, #111 44%, #111 56%, transparent 56%),
+    linear-gradient(45deg, transparent 44%, #111 44%, #111 56%, transparent 56%),
+    #e8e8e8;
+  background-size: 100% 100%;
+  cursor: var(--cursor-pointer);
+  padding: 0;
+}
+
+.desktop-closebox:hover {
+  background-color: #ccc;
+}
+
+.desktop-close-text {
+  font-family: var(--font-system);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: #333;
+  border: 1px solid #111;
+  background: #e8e8e8;
+  padding: 1px 6px;
+  box-shadow: inset 1px 1px 0 #fff;
+}
+
+.desktop-close-text:hover {
+  background: #ddd;
+}
+
+.desktop-window-body {
+  font-family: var(--font-system);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.desktop-window-body::-webkit-scrollbar {
+  width: 14px;
+  background: #eee;
+  border-left: 1px solid #111;
+}
+
+.desktop-window-body::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border: 1px solid #111;
+  border-radius: 0;
+}
+
+.desktop-hero-name,
+.desktop-hero-eyebrow,
+.desktop-hero-sub,
+.desktop-folder-enter {
+  opacity: 0;
+}
+
+.desktop-hero-name,
+.desktop-hero-eyebrow,
+.desktop-hero-sub {
+  transform: translateY(8px);
+}
+
+.is-booted .desktop-hero-eyebrow {
+  animation: desk-rise 0.55s steps(5, end) forwards 0.05s;
+}
+
+.is-booted .desktop-hero-name {
+  animation: desk-rise 0.65s steps(6, end) forwards 0.1s;
+}
+
+.is-booted .desktop-hero-sub {
+  animation: desk-rise 0.55s steps(5, end) forwards 0.28s;
+}
+
+.is-booted .desktop-folder-enter {
+  animation: desk-fade 0.4s steps(4, end) forwards;
+}
+
+@keyframes desk-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes desk-rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes desk-window-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Terminal app */
+.desktop-terminal {
+  display: flex;
+  flex-direction: column;
+  height: min(52vh, 420px);
+  background: #111;
+  color: #e8e8e8;
+  font-family: var(--font-system);
+  font-size: 13px;
+  line-height: 1.5;
+  cursor: var(--cursor-text);
+}
+
+.desktop-terminal-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 14px 10px;
+}
+
+.desktop-terminal-scroll::-webkit-scrollbar {
+  width: 12px;
+  background: #1a1a1a;
+  border-left: 1px solid #333;
+}
+
+.desktop-terminal-scroll::-webkit-scrollbar-thumb {
+  background: #444;
+  border: 1px solid #111;
+}
+
+.desktop-terminal-line {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.desktop-terminal-sys {
+  color: #8ec8ff;
+}
+
+.desktop-terminal-out {
+  color: #e8e8e8;
+}
+
+.desktop-terminal-err {
+  color: #ff8a8a;
+}
+
+.desktop-terminal-in {
+  color: #e8e8e8;
+}
+
+.desktop-terminal-prompt {
+  color: #7dffb3;
+  user-select: none;
+}
+
+.desktop-terminal-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.desktop-terminal-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #e8e8e8;
+  font: inherit;
+  caret-color: #7dffb3;
+  padding: 0;
+}
+
+.desktop-app-svg {
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.25));
+}
+
+.desktop-app:active .desktop-app-svg {
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.2));
+  transform: translate(1px, 1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desktop-hero-name,
+  .desktop-hero-eyebrow,
+  .desktop-hero-sub,
+  .desktop-folder-enter,
+  .desktop-window {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Writing / blog — desktop chrome + readable long-form type */
+.writing-root {
+  --desk-ink: #111111;
+  --desk-muted: #555555;
+  --desk-accent: #0000aa;
+  --reading: var(--font-reading), "Iowan Old Style", "Palatino Linotype", Palatino,
+    Georgia, serif;
+  background: #fafaf8;
+  color: #1a1a1a;
+  font-family: var(--font-mono), "Courier New", monospace;
+}
+
+.writing-article {
+  max-width: 42rem;
+  margin-inline: auto;
+}
+
+.writing-title {
+  font-family: var(--reading);
+  font-weight: 600;
+  font-size: clamp(1.85rem, 4.5vw, 2.65rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #111;
+  text-wrap: balance;
+}
+
+.writing-excerpt {
+  font-family: var(--reading);
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: #3d3d3d;
+}
+
+.writing-prose {
+  font-family: var(--reading);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #222;
+  max-width: 65ch;
+}
+
+.writing-prose > *:first-child {
+  margin-top: 0;
+}
+
+.writing-prose h1,
+.writing-prose h2,
+.writing-prose h3,
+.writing-prose h4 {
+  font-family: var(--reading);
+  font-weight: 600;
+  color: #111;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+  scroll-margin-top: 4.5rem;
+}
+
+.writing-prose h1 {
+  font-size: 1.65rem;
+  margin: 2.75rem 0 1rem;
+}
+
+.writing-prose h2 {
+  font-size: 1.4rem;
+  margin: 2.5rem 0 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.writing-prose h3 {
+  font-size: 1.2rem;
+  margin: 2rem 0 0.65rem;
+}
+
+.writing-prose h4 {
+  font-size: 1.1rem;
+  margin: 1.75rem 0 0.5rem;
+}
+
+.writing-prose p {
+  margin: 0 0 1.35rem;
+}
+
+.writing-prose a {
+  color: #0000aa;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.writing-prose a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.writing-prose strong {
+  font-weight: 600;
+  color: #111;
+}
+
+.writing-prose em {
+  font-style: italic;
+}
+
+.writing-prose ul,
+.writing-prose ol {
+  margin: 0 0 1.35rem;
+  padding-left: 1.4rem;
+}
+
+.writing-prose li {
+  margin-bottom: 0.55rem;
+  padding-left: 0.2rem;
+}
+
+.writing-prose li::marker {
+  color: #0000aa;
+}
+
+.writing-prose ul {
+  list-style: disc;
+}
+
+.writing-prose ol {
+  list-style: decimal;
+}
+
+.writing-prose blockquote {
+  margin: 1.75rem 0;
+  padding: 0.15rem 0 0.15rem 1.15rem;
+  border-left: 3px solid #0000aa;
+  color: #333;
+  font-style: italic;
+}
+
+.writing-prose blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.writing-prose code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.88em;
+  background: #f0efe9;
+  border: 1px solid #ddd;
+  padding: 0.12em 0.35em;
+  border-radius: 2px;
+}
+
+.writing-prose pre {
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.2rem;
+  overflow-x: auto;
+  background: #161616;
+  color: #f2f2f2;
+  border: 2px solid #111;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.writing-prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.writing-prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #111;
+  margin: 1.75rem 0;
+}
+
+.writing-prose hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 2.5rem 0;
+}
+
+.writing-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-size: 1rem;
+}
+
+.writing-prose th,
+.writing-prose td {
+  border: 1px solid #ccc;
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+}
+
+.writing-prose th {
+  background: #f3f2ee;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .writing-prose {
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .writing-excerpt {
+    font-size: 1.1rem;
+  }
+}

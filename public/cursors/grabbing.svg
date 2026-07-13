@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Closed fist -->
+  <path
+    fill="#ffffff"
+    d="M9 10h14v4H9v-4zm-2 4h18v10H7V14zm2 10h14v2H9v-2z"
+  />
+  <path
+    fill="#111111"
+    d="M11 11h10v2H11v-2zM8 15h16v8H8v-8zm2 8h12v1H10v-1z"
+  />
+</svg>
