@@ -3,6 +3,7 @@
 import { use, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { BlogPost } from "@/types/blog";
+import { MenubarStatus } from "@/components/desktop/MenubarStatus";
 
 type Heading = { id: string; text: string };
 
@@ -38,7 +39,6 @@ export default function BlogPost({
   const [upvotes, setUpvotes] = useState(0);
   const [hasUpvoted, setHasUpvoted] = useState(false);
   const [isUpvoting, setIsUpvoting] = useState(false);
-  const [clock, setClock] = useState("");
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -78,20 +78,6 @@ export default function BlogPost({
 
     window.addEventListener("scroll", updateReadingProgress);
     return () => window.removeEventListener("scroll", updateReadingProgress);
-  }, []);
-
-  useEffect(() => {
-    const tick = () => {
-      setClock(
-        new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        })
-      );
-    };
-    tick();
-    const id = setInterval(tick, 30_000);
-    return () => clearInterval(id);
   }, []);
 
   const headings = useMemo(
@@ -201,7 +187,7 @@ export default function BlogPost({
           <Link href="/" className="hidden hover:underline sm:inline">
             desktop
           </Link>
-          <span suppressHydrationWarning>{clock || "\u00a0"}</span>
+          <MenubarStatus />
         </div>
       </header>
 

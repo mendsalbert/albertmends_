@@ -10,6 +10,7 @@ import { DesktopWindow } from "@/components/desktop/DesktopWindow";
 import { GuestbookPanel } from "@/components/desktop/GuestbookPanel";
 import { GalleryPanel } from "@/components/desktop/GalleryPanel";
 import { TerminalPanel } from "@/components/desktop/TerminalPanel";
+import { MenubarStatus } from "@/components/desktop/MenubarStatus";
 
 type FolderId =
   | "work"
@@ -253,7 +254,6 @@ export default function Home() {
   const [windows, setWindows] = useState<WindowState[]>([]);
   const [zTop, setZTop] = useState(30);
   const [booted, setBooted] = useState(false);
-  const [clock, setClock] = useState("");
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [blogLoading, setBlogLoading] = useState(true);
   const [subscribers, setSubscribers] = useState<number | null>(null);
@@ -279,18 +279,6 @@ export default function Home() {
       window.removeEventListener("resize", onResize);
       cancelAnimationFrame(t);
     };
-  }, []);
-
-  useEffect(() => {
-    const tick = () => {
-      const now = new Date();
-      setClock(
-        now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-      );
-    };
-    tick();
-    const id = setInterval(tick, 30_000);
-    return () => clearInterval(id);
   }, []);
 
   useEffect(() => {
@@ -450,9 +438,7 @@ export default function Home() {
             writing
           </button>
         </div>
-        <div className="text-[15px] text-[#333]" suppressHydrationWarning>
-          {clock || "\u00a0"}
-        </div>
+        <MenubarStatus />
       </header>
 
       <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6">
